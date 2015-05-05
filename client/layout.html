@@ -1,0 +1,39 @@
+<head>
+  <title>Moorddiner Deut</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+</head>
+
+<body>
+</body>
+
+<template name="layout">
+  <div id="container">
+    <div id="header">
+      <span class="header header-1">Een verlaten spookdorp in België</span>
+      <span class="header header-2">Een moord met een diep verleden</span>
+      <span class="header header-3">Een onoplosbaar mysterie</span>
+      <span class="header header-4">Of.... toch niet?</span>
+      <span class="word word-1">Roddels</span>
+      <span class="word word-2">Intriges</span>
+      <span class="word word-3">Mysterie</span>
+      <span class="word word-4">Boeiende personages</span>
+      <span class="word word-5">Samenzwering</span>
+      <span class="word word-6">Complot</span>
+    </div>
+    <nav id="nav">
+      <ul>
+        <li><a href="/">Home</a> |</li>
+        <li><a href="/moorddiners/doel">Moorddiner "Doel"</a> |</li>
+        <li><a href="/prijzen">Prijzen</a> |</li>
+        <li><a href="/bestellen">Bestellen</a> |</li>
+        <li><a href="/over">Over Deut</a> |</li>
+        <li><a href="/faq">Veelgestelde vragen</a></li>
+      </ul>
+    </nav>
+    {{> yield}}
+  </div>
+</template>
+
+<template name="loading">
+  <div>loading...</div>
+</template>
