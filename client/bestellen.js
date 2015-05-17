@@ -35,6 +35,7 @@ AutoForm.addHooks('customerForm', {
   // Called when any submit operation succeeds
   onSuccess: function(formType, result) {
     success.set(true);
+    $("html, body").animate({ scrollTop: "0px" });
   },
 
   // Called when any submit operation fails

@@ -19,18 +19,29 @@
       tableColumns: [
         { label: 'Naam', name: 'name' }
         { label: 'Nummer', name: 'number' }
-        { label: 'Verhaal', template: 'cmsCharacterStory' }
+        { label: 'Verhaal', name: 'storyname()' }
       ]
     Events:
       label: 'Evenementen'
       color: 'purple'
       icon: 'calendar'
-      extraFields: ['story']
+      extraFields: ['story','date','createddate','participants','scheduled']
+      omitFields: ['scheduled']
       tableColumns: [
         { label: 'Klant', name: 'contact.name' }
-        { label: 'Besteld op', name: 'createddate' }
-        { label: 'Datum', name: 'date' }
-        { label: 'Verhaal', template: 'cmsCharacterStory' }
+        { label: 'Besteld op', name: 'createddateFormat()' }
+        { label: 'Datum', name: 'dateFormat()' }
+        { label: 'Verhaal', name: 'storyname()' }
+        { label: 'Volgende stap', template: 'eventStatus' }
       ]
 
-
+Characters.helpers
+  storyname: ->
+    Stories.findOne(@story).name;
+Events.helpers
+  storyname: ->
+    Stories.findOne(@story).name;
+  createddateFormat: ->
+    moment(@createddate).format('D MMM YYYY');
+  dateFormat: ->
+    moment(@date).format('D MMM YYYY');
