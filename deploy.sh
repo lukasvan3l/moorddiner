@@ -12,4 +12,6 @@ echo
 echo "--- Deploying to moorddiner.3l.nl ..."
 git push scalingo master
 echo "--- Done deploying!"
+
+git checkout develop
 echo
