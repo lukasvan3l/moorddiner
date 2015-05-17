@@ -1,7 +1,6 @@
 @AdminConfig =
   name: 'Moorddiner'
   nonAdminRedirectRoute: 'login'
-  # adminEmails: ['lukas@3l.nl','hester@3l.nl','lukas@q42.nl']
   collections:
     Stories:
       label: 'Verhalen'
@@ -29,8 +28,8 @@
       extraFields: ['story']
       tableColumns: [
         { label: 'Klant', name: 'contact.name' }
+        { label: 'Besteld op', name: 'createddate' }
         { label: 'Datum', name: 'date' }
-        { label: 'Adres', name: 'address' }
         { label: 'Verhaal', template: 'cmsCharacterStory' }
       ]
 
