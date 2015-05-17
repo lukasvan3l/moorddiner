@@ -1,21 +1,31 @@
 <template name="bestellen">
   <article id="content">
-    <h2>Bestellen</h2>
-
-    <label>Je naam</label>
-    <input />
-
-    <label>Je mailadres</label>
-    <input />
-
-    <label>Datum</label>
-    <input />
-
-    <label>Aantal spelers</label>
-    <input />
-
-    <p>Prijs: #spelers * 8,50 =</p>
-
-    <button>bestel</button>
+    {{#unless success}}
+      {{#autoForm collection="Events" id="customerForm" type="insert" resetOnSuccess="true"}}
+        <h2>Bestellen</h2>
+        <input type="hidden" name="story" data-schema-key="story" class="form-control" value="{{story}}" />
+        {{> afQuickField name='contact.name' label='Je naam' placeholder='Je naam'}}
+        {{> afQuickField name='contact.email' label='Je mailadres' placeholder='Je mailadres'}}
+        {{> afQuickField name='date' label='Datum moorddiner (over minimaal 2 weken)'}}
+        {{> afQuickField name='time' placeholder='18:30'}}
+        {{> afQuickField name='address' placeholder='Kalverstraat 1, Amsterdam'}}
+        {{> afQuickField name='amountOfParticipants' placeholder='tussen 8 en 12'}}
+        {{> afQuickField name='comments' rows=4 placeholder='Eventuele vragen of voorkeuren, kan later ook per mail.'}}
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Betaling</h3>
+          </div>
+          <div class="panel-body">
+            <p>Prijs: {{players}} spelers * {{pricePerPerson}} = &euro; {{price}}</p>
+            <p><i>Zorg dat het bedrag 2 weken voor aanvang van het moorddiner binnen is op rekening NL43ABNA0572899149 t.n.v. Hester van Deutekom met vermelding van je naam.</i></p>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Bestel</button>
+      {{/autoForm}}
+    {{else}}
+      <h2>Bestelling geslaagd!</h2>
+      <p>Je bestelling is binnen, je krijgt hier binnen een paar uur een bevestiging mail van. Ik wens je alvast veel voorpret!</p>
+      <p>Groet,<br />Hester</p>
+    {{/unless}}
   </article>
 </template>

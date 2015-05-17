@@ -1,4 +1,6 @@
 
+pricePerPerson = 8.50;
+
 Router.configure({
   layoutTemplate: 'layout',
   loadingTemplate: 'loading'

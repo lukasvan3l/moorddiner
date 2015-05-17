@@ -50,12 +50,11 @@ CharacterSchema = new SimpleSchema
     label: 'E-mail berichten'
 
 ParticipantCharacter = new SimpleSchema
-  name:
-    type: String
-    label: 'Naam'
   email:
     type: String
     label: 'E-mail adres'
+    regEx: SimpleSchema.RegEx.Email
+    optional: true
   character:
     type : String
     label: 'Personage'
@@ -72,9 +71,7 @@ ContactDetails = new SimpleSchema
   email:
     type: String
     label: 'E-mail adres'
-  phone:
-    type: String
-    label: 'Telefoonnummer'
+    regEx: SimpleSchema.RegEx.Email
 
 EventSchema = new SimpleSchema
   story:
@@ -85,18 +82,35 @@ EventSchema = new SimpleSchema
       options : () ->
         Stories.find().map (b) ->
           label : b.name, value : b._id
+  createdDate:
+    type: Date
+    label: 'Besteld op'
   date:
     type: Date
-    label: 'Datum'
+    label: 'Datum moorddiner'
+    min: -> moment().add(14,'days').toDate()
+  time:
+    type: String
+    label: 'Tijdstip aanvang moorddiner'
   address:
     type: String
-    label: 'Adres'
+    label: 'Adres moorddiner'
   contact:
     type: ContactDetails
     label: 'Contactpersoon'
+  comments:
+    type: String
+    optional: true
+    label: 'Opmerkingen'
+  amountOfParticipants:
+    type: Number
+    min: 8
+    max: 12
+    label: 'Aantal deelnemers'
   participants:
     type: [ParticipantCharacter]
     label: 'Deelnemers'
+    optional: true
 
 Stories.attachSchema(StorySchema)
 Characters.attachSchema(CharacterSchema)

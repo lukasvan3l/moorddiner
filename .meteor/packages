@@ -23,6 +23,7 @@ dburles:collection-helpers
 aldeed:collection2
 twbs:bootstrap
 fortawesome:fontawesome
+aldeed:autoform
+q42:autoform-markdown
 yogiben:admin
 rahul:animate-everything
-q42:autoform-markdown
