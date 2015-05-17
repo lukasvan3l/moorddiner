@@ -1,5 +1,6 @@
 @Stories = new Meteor.Collection('stories');
 @Characters = new Meteor.Collection('characters');
+@Events = new Meteor.Collection('events');
 
 StorySchema = new SimpleSchema
   name:
@@ -48,5 +49,55 @@ CharacterSchema = new SimpleSchema
     type: [EmailSchema]
     label: 'E-mail berichten'
 
+ParticipantCharacter = new SimpleSchema
+  name:
+    type: String
+    label: 'Naam'
+  email:
+    type: String
+    label: 'E-mail adres'
+  character:
+    type : String
+    label: 'Personage'
+    regEx: SimpleSchema.RegEx.Id
+    autoform:
+      options : () ->
+        Characters.find().map (b) ->
+          label : b.name, value : b._id
+
+ContactDetails = new SimpleSchema
+  name:
+    type: String
+    label: 'Naam'
+  email:
+    type: String
+    label: 'E-mail adres'
+  phone:
+    type: String
+    label: 'Telefoonnummer'
+
+EventSchema = new SimpleSchema
+  story:
+    type : String
+    label: 'Verhaal'
+    regEx: SimpleSchema.RegEx.Id
+    autoform:
+      options : () ->
+        Stories.find().map (b) ->
+          label : b.name, value : b._id
+  date:
+    type: Date
+    label: 'Datum'
+  address:
+    type: String
+    label: 'Adres'
+  contact:
+    type: ContactDetails
+    label: 'Contactpersoon'
+  participants:
+    type: [ParticipantCharacter]
+    label: 'Deelnemers'
+
 Stories.attachSchema(StorySchema)
 Characters.attachSchema(CharacterSchema)
+Events.attachSchema(EventSchema)
