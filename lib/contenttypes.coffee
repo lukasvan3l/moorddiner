@@ -85,6 +85,7 @@ EventSchema = new SimpleSchema
   createdDate:
     type: Date
     label: 'Besteld op'
+    optional: true
   scheduled:
     type: Boolean
     defaultValue: false

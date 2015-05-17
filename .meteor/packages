@@ -7,6 +7,7 @@
 meteor-platform
 coffeescript
 stylus
+email
 reactive-var
 accounts-base
 accounts-password
@@ -27,3 +28,4 @@ aldeed:autoform
 q42:autoform-markdown
 yogiben:admin
 rahul:animate-everything
+matb33:collection-hooks
