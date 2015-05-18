@@ -1,5 +1,6 @@
 Meteor.publish 'data', ->
   return [
       Stories.find(),
-      Characters.find()
+      Characters.find(),
+      Events.find()
     ];

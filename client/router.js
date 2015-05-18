@@ -1,6 +1,4 @@
 
-pricePerPerson = 8.50;
-
 Router.configure({
   layoutTemplate: 'layout',
   loadingTemplate: 'loading'
@@ -20,3 +18,16 @@ Router.route('/moorddiners/:_diner', function () {
   GAnalytics.pageview();
   this.render(this.params._diner);
 });
+
+
+Template.registerHelper('formatDate', function(context, format) {
+    if (!format || typeof(format) != 'string')
+        format = 'D MMM YYYY';
+    if (context)
+        return moment(context).format(format);
+});
+
+Template.registerHelper('ibanHester', function(context, format) {
+    return ibanHester;
+});
+

@@ -14,11 +14,6 @@ StorySchema = new SimpleSchema
     label: 'Maximaal aantal personen'
 
 EmailSchema = new SimpleSchema
-  body:
-    type: String
-    label: 'Tekst'
-    autoform:
-      type: 'markdown'
   # amount of days before the event itself to send this mail
   sendOffset:
     type: Number
@@ -27,6 +22,11 @@ EmailSchema = new SimpleSchema
     type: Number
     optional: true
     label: 'Alleen versturen als dit het aantal personen is'
+  body:
+    type: String
+    label: 'Tekst'
+    autoform:
+      type: 'markdown'
 
 CharacterSchema = new SimpleSchema
   story:

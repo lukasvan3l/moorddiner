@@ -1,3 +1,6 @@
+@pricePerPerson = 8.50;
+@ibanHester = 'NL43ABNA0572899149';
+
 @AdminConfig =
   name: 'Moorddiner'
   nonAdminRedirectRoute: 'login'
@@ -25,7 +28,7 @@
       label: 'Evenementen'
       color: 'purple'
       icon: 'calendar'
-      extraFields: ['story','date','createddate','participants','scheduled']
+      extraFields: ['story','date','createdDate','participants','scheduled']
       omitFields: ['scheduled']
       tableColumns: [
         { label: 'Klant', name: 'contact.name' }
@@ -42,6 +45,7 @@ Events.helpers
   storyname: ->
     Stories.findOne(@story).name;
   createddateFormat: ->
-    moment(@createddate).format('D MMM YYYY');
+    return moment(@createdDate).format('D MMM YYYY') if @createdDate
+    ""
   dateFormat: ->
     moment(@date).format('D MMM YYYY');
