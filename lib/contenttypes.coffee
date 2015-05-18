@@ -50,6 +50,10 @@ CharacterSchema = new SimpleSchema
     label: 'E-mail berichten'
 
 ParticipantCharacter = new SimpleSchema
+  name:
+    type: String
+    label: 'Naam'
+    optional: true
   email:
     type: String
     label: 'E-mail adres'
