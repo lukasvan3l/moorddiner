@@ -1,0 +1,15 @@
+<template name="eventStatus">
+  {{#if isExpired}}
+    Verleden tijd
+  {{else}}
+    {{#unless isAssigned}}
+      <a href="Events/{{doc._id}}/edit">Rollen verdelen</a>
+    {{else}}
+      {{#unless scheduled}}
+        <a href="Events/{{doc._id}}/schedule">Mails plannen</a>
+      {{else}}
+        All set!
+      {{/unless}}
+    {{/unless}}
+  {{/if}}
+</template>

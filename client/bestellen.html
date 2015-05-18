@@ -8,7 +8,7 @@
         {{> afQuickField name='contact.email' label='Je mailadres' placeholder='Je mailadres'}}
         {{> afQuickField name='date' label='Datum moorddiner (over minimaal 2 weken)'}}
         {{> afQuickField name='time' placeholder='18:30'}}
-        {{> afQuickField name='address' placeholder='Kalverstraat 1, Amsterdam'}}
+        {{> afQuickField name='address' placeholder='Kalverstraat 42, Amsterdam'}}
         {{> afQuickField name='amountOfParticipants' placeholder='tussen 8 en 12'}}
         {{> afQuickField name='comments' rows=4 placeholder='Eventuele vragen of voorkeuren, kan later ook per mail.'}}
         <div class="panel panel-default">
@@ -17,7 +17,7 @@
           </div>
           <div class="panel-body">
             <p>Prijs: {{players}} spelers * {{pricePerPerson}} = &euro; {{price}}</p>
-            <p><i>Zorg dat het bedrag 2 weken voor aanvang van het moorddiner binnen is op rekening NL43ABNA0572899149 t.n.v. Hester van Deutekom met vermelding van je naam.</i></p>
+            <p><i>Zorg dat het bedrag 2 weken voor aanvang van het moorddiner binnen is op rekening {{ibanHester}} t.n.v. Hester van Deutekom met vermelding van je naam.</i></p>
           </div>
         </div>
         <button type="submit" class="btn btn-primary">Bestel</button>

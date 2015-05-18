@@ -1,0 +1,33 @@
+<template name="schedule">
+  <div class="schedule">
+    {{#with event}}
+      <h3>Moorddiner Doel bij {{contact.name}}</h3>
+      <div>
+        {{formatDate date}} {{time}} op {{address}}, {{amountOfParticipants}} deelnemers
+      </div>
+      {{#if comments}}
+        <div><i>
+          {{comments}}
+        </i></div>
+      {{/if}}
+      {{#each participants}}
+        {{> participant}}
+      {{/each}}
+    {{/with}}
+  </div>
+</template>
+
+<template name="participant">
+  <div class="participant">
+    {{#each mails ..}}
+      {{> participantMail}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="participantMail">
+  <h4>{{../email}} - {{formatDate date}}</h4>
+  <div class="mailbody">
+    {{{renderMarkdown body}}}
+  </div>
+</template>
