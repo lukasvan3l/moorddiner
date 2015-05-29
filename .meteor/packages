@@ -13,7 +13,7 @@ accounts-base
 accounts-password
 accounts-google
 accounts-ui
-mrt:moment
+momentjs:moment
 manuelschoebel:ms-seo
 ongoworks:spiderable
 dfischer:phantomjs
