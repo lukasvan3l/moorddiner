@@ -13,7 +13,7 @@ accounts-base
 accounts-password
 accounts-google
 accounts-ui
-mrt:moment
+momentjs:moment
 manuelschoebel:ms-seo
 ongoworks:spiderable
 dfischer:phantomjs
@@ -29,3 +29,4 @@ q42:autoform-markdown
 yogiben:admin
 rahul:animate-everything
 matb33:collection-hooks
+meteorhacks:ssr

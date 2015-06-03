@@ -1,8 +1,11 @@
 
+SSR.compileTemplate('mailConfirmation', Assets.getText('mail-confirmation.html'));
+SSR.compileTemplate('mailCustomer', Assets.getText('mail-customer.html'));
+
 Events.after.insert(function(userId, doc) {
-  var text = 'Ha Hester!\n\nGefeliciteerd, je hebt net een moorddiner verkocht :)\n\n';
-  text += 'Zie http://moorddiner.3l.nl/admin/Events/' + this._id + '/edit';
-  text += '\n\nGroet,\nMoi';
+  var text = SSR.render("mailCustomer", {
+    url: 'http://moorddiner.3l.nl/admin/Events/' + doc._id + '/edit'
+  });
 
   Email.send({
     to: 'hester@3l.nl',
@@ -14,12 +17,14 @@ Events.after.insert(function(userId, doc) {
 
 
 Events.after.insert(function(userId, doc) {
-  var text = 'Beste ' + doc.contact.name + ',';
-  text += '\n\nGefeliciteerd, jij gaat binnenkort een Moorddiner beleven! En wel op ' + moment(doc.date).format('D MMM YYYY') + ' om ' + doc.time + ', ' + doc.address + '.';
-  text += '\n\nIndien je dit nog niet gedaan hebt, maak a.u.b. &euro; ' + (doc.amountOfParticipants * pricePerPerson).toFixed(2) + ' over naar rekening ' + ibanHester + ' t.n.v. Hester van Deutekom.';
-  text += ' Pas dan is de reservering definitief.';
-  text += '\n\nKlopt er iets niet of heb je vragen? Neem dan contact met mij op.';
-  text += '\n\nGroet,\nHester van Deutekom\n\nhester@3l.nl | 06-15053990';
+  var text = SSR.render("mailConfirmation", {
+    recipient: doc.contact.name,
+    price: (doc.amountOfParticipants * pricePerPerson).toFixed(2),
+    ibanHester: ibanHester,
+    date: moment(doc.date).format('D MMM YYYY'),
+    time: doc.time,
+    address: doc.address
+  });
 
   Email.send({
     to: doc.contact.email,
