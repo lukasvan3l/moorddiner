@@ -9,7 +9,7 @@ git flow release finish $NOW
 echo "--- New release $NOW created."
 echo
 
-echo "--- Deploying to moorddiner.3l.nl ..."
+echo "--- Deploying to www.jouwmoorddinerthuis.nl ..."
 git push scalingo master
 echo "--- Done deploying!"
 
