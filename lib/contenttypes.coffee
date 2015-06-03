@@ -66,7 +66,7 @@ ParticipantCharacter = new SimpleSchema
     autoform:
       options : () ->
         Characters.find().map (b) ->
-          label : b.name, value : b._id
+          label : b.number + " - " + b.name, value : b._id
 
 ContactDetails = new SimpleSchema
   name:
