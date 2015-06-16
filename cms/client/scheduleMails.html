@@ -3,7 +3,7 @@
     {{#with event}}
       <h3>Moorddiner Doel bij {{contact.name}}</h3>
       <div>
-        {{formatDate date}} {{time}} op {{address}}, {{amountOfParticipants}} deelnemers
+        {{formatDate date}} om {{time}} op {{address}}, {{amountOfParticipants}} deelnemers
       </div>
       {{#if comments}}
         <div><i>
@@ -29,5 +29,6 @@
   <h4>{{../email}} - {{formatDate date}}</h4>
   <div class="mailbody">
     {{{renderMarkdown body}}}
+    <p style="font-size: 10px; text-align: center;">Moorddiner Doel – georganiseerd door {{../../contact.name}} op {{formatDate ../../date}} - <a href="http://www.jouwmoorddinerthuis.nl">www.jouwmoorddinerthuis.nl</a></p>
   </div>
 </template>
