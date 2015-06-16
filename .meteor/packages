@@ -13,6 +13,7 @@ accounts-base
 accounts-password
 accounts-ui
 momentjs:moment
+rzymek:moment-locale-nl
 manuelschoebel:ms-seo
 ongoworks:spiderable
 dfischer:phantomjs
