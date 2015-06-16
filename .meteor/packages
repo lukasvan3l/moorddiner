@@ -13,6 +13,7 @@ accounts-base
 accounts-password
 accounts-ui
 momentjs:moment
+rzymek:moment-locale-nl
 manuelschoebel:ms-seo
 ongoworks:spiderable
 dfischer:phantomjs
@@ -29,3 +30,4 @@ yogiben:admin
 rahul:animate-everything
 matb33:collection-hooks
 meteorhacks:ssr
+meteorhacks:kadira

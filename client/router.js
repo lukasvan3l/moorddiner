@@ -66,7 +66,7 @@ Meteor.startup(function() {
 
 Template.registerHelper('formatDate', function(context, format) {
     if (!format || typeof(format) != 'string')
-        format = 'D MMM YYYY';
+        format = 'D MMMM YYYY';
     if (context)
         return moment(context).format(format);
 });
