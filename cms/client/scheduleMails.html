@@ -26,9 +26,10 @@
 </template>
 
 <template name="participantMail">
-  <h4>{{../email}} - {{formatDate date}}</h4>
+  <h4 style="float:right;">{{../email}} als {{characterName ../character}} - {{formatDate date}}</h4>
+  <h4>{{subject}}</h4>
   <div class="mailbody">
     {{{renderMarkdown body}}}
-    <p style="font-size: 10px; text-align: center;">Moorddiner Doel – georganiseerd door {{../../contact.name}} op {{formatDate ../../date}} - <a href="http://www.jouwmoorddinerthuis.nl">www.jouwmoorddinerthuis.nl</a></p>
+    <p style="margin-top: 20px; font-style: italic; font-size: 10px; text-align: center;">Moorddiner Doel – georganiseerd door {{../../contact.name}} op {{formatDate ../../date}} - <a href="http://www.jouwmoorddinerthuis.nl">www.jouwmoorddinerthuis.nl</a></p>
   </div>
 </template>

@@ -8,6 +8,10 @@ Template.schedule.helpers
   'event': ->
     Events.findOne(Iron.controller().getParams()._id)
 
+Template.participantMail.helpers
+  characterName: (character) ->
+    Characters.findOne(character).name
+
 Template.participant.helpers
   mails: (ev) ->
     participant = this
@@ -19,6 +23,9 @@ Template.participant.helpers
       return true if not m.onlyForAmountPeople
       return false
 
+    # calculate amount of mails - after filtering
+    amountOfMails = _.filter(mails, (m2) -> m2.sendOffset >= 0).length;
+
     # sort by sendOffset
     mails = _.sortBy mails, (m) ->
       -m.sendOffset
@@ -26,13 +33,16 @@ Template.participant.helpers
     # replace variables
     _.each mails, (m) ->
       m.body = m.body.replace('{{speler}}', participant.name)
-        .replace('{{datum}}', moment(ev.date).format('D MMM YYYY') + " om " + ev.time)
+        .replace('{{datum}}', moment(ev.date).format('D MMMM YYYY') + " om " + ev.time)
         .replace('{{adres}}', ev.address)
-        .replace('{{aantalmails}}', _.filter(mails, (m2) -> m2.sendOffset >= 0).length - 1)
+        .replace('{{aantalmails}}', amountOfMails - 1)
 
     # add date
+    counter = 0
     _.each mails, (m) ->
+      counter++
       m.date = moment(ev.date).subtract(m.sendOffset, 'days')
+      m.subject = "Moorddiner Doel - mail " + counter + " van " + amountOfMails
 
     mails
 

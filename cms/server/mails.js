@@ -11,7 +11,7 @@ Events.after.insert(function(userId, doc) {
     to: 'hester@jouwmoorddinerthuis.nl',
     from: 'lukas@jouwmoorddinerthuis.nl',
     subject: 'Moorddiner voor ' + doc.contact.name,
-    text: text
+    html: text
   });
 });
 
@@ -30,7 +30,7 @@ Events.after.insert(function(userId, doc) {
     to: doc.contact.email,
     from: 'hester@jouwmoorddinerthuis.nl',
     subject: 'Bevestiging Moorddiner \'Doel\'',
-    text: text
+    html: text
   });
 });
 
