@@ -21,7 +21,7 @@ Events.after.insert(function(userId, doc) {
     recipient: doc.contact.name,
     price: (doc.amountOfParticipants * pricePerPerson).toFixed(2),
     ibanHester: ibanHester,
-    date: moment(doc.date).format('D MMM YYYY'),
+    date: moment(doc.date).format('D MMMM YYYY'),
     time: doc.time,
     address: doc.address
   });

@@ -45,7 +45,7 @@ Events.helpers
   storyname: ->
     Stories.findOne(@story).name;
   createddateFormat: ->
-    return moment(@createdDate).format('D MMM YYYY') if @createdDate
+    return moment(@createdDate).format('D MMMM YYYY') if @createdDate
     ""
   dateFormat: ->
-    moment(@date).format('D MMM YYYY');
+    moment(@date).format('D MMMM YYYY');
