@@ -136,7 +136,7 @@ OutboxSchema = new SimpleSchema
     type: Date
     label: 'Wordt verzonden op'
   sentDate:
-    type: String
+    type: Date
     label: 'Is verzonden op'
     optional: true
   recipient:

@@ -12,7 +12,7 @@
       extraFields: ['scheduledDate','sentDate']
       tableColumns: [
         { label: 'Ontvanger', name: 'recipient' }
-        { label: 'Onderwerp', name: 'subject' }
+        #{ label: 'Onderwerp', name: 'subject' }
         { label: 'Wordt verzonden op', name: 'scheduledDateFormat()' }
         { label: 'Is verzonden op', name: 'sentDateFormat()' }
       ]
