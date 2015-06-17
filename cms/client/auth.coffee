@@ -1,4 +1,4 @@
 
 Router.route '/login', ->
-  @redirect '/admin' if 'admin' in Meteor.user().roles
+  @redirect '/admin' if Meteor.user() and 'admin' in Meteor.user().roles
   @render 'loginButtons'
