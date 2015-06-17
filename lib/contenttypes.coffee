@@ -1,6 +1,7 @@
 @Stories = new Meteor.Collection('stories');
 @Characters = new Meteor.Collection('characters');
 @Events = new Meteor.Collection('events');
+@Outbox = new Meteor.Collection('outbox');
 
 StorySchema = new SimpleSchema
   name:
@@ -89,7 +90,10 @@ EventSchema = new SimpleSchema
   createdDate:
     type: Date
     label: 'Besteld op'
-    optional: true
+    autoValue: ->
+      return new Date if @isInsert
+      return $setOnInsert: new Date if @isUpsert
+      @unset()
   scheduled:
     type: Boolean
     defaultValue: false
@@ -120,6 +124,35 @@ EventSchema = new SimpleSchema
     label: 'Deelnemers'
     optional: true
 
+OutboxSchema = new SimpleSchema
+  createdDate:
+    type: Date
+    label: 'Besteld op'
+    autoValue: ->
+      return new Date if @isInsert
+      return $setOnInsert: new Date if @isUpsert
+      @unset()
+  scheduledDate:
+    type: Date
+    label: 'Wordt verzonden op'
+  sentDate:
+    type: String
+    label: 'Is verzonden op'
+    optional: true
+  recipient:
+    type: String
+    label: 'Ontvanger'
+    regEx: SimpleSchema.RegEx.Email
+  subject:
+    type: String
+    min: 10
+    label: 'Onderwerp'
+  body:
+    type: String
+    min: 10
+    label: 'Inhoud'
+
 Stories.attachSchema(StorySchema)
 Characters.attachSchema(CharacterSchema)
 Events.attachSchema(EventSchema)
+Outbox.attachSchema(OutboxSchema)

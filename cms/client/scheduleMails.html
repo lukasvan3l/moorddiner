@@ -13,6 +13,22 @@
       {{#each participants}}
         {{> participant}}
       {{/each}}
+      <p>&nbsp;</p>
+      {{#if scheduled}}
+        <p style="text-align:center;">
+          Deze mails zijn geagendeerd!
+        </p>
+        <p style="text-align:center;">
+          Je kunt ze terug vinden in de <a href="/admin/Outbox">outbox</a>.
+        </p>
+      {{else}}
+        <p style="text-align:center;">
+          Met deze knop zet je bovenstaande mails in de outbox. Je kunt ze daarna alleen nog maar 1 voor 1 aanpassen.
+        </p>
+        <p style="text-align:center;">
+          <button id="scheduleMails" class="btn btn-primary">Agendeer deze mails!</button>
+        </p>
+      {{/if}}
     {{/with}}
   </div>
 </template>
@@ -26,10 +42,20 @@
 </template>
 
 <template name="participantMail">
-  <h4 style="float:right;">{{../email}} als {{characterName ../character}} - {{formatDate date}}</h4>
-  <h4>{{subject}}</h4>
-  <div class="mailbody">
-    {{{renderMarkdown body}}}
-    <p style="margin-top: 20px; font-style: italic; font-size: 10px; text-align: center;">Moorddiner Doel – georganiseerd door {{../../contact.name}} op {{formatDate ../../date}} - <a href="http://www.jouwmoorddinerthuis.nl">www.jouwmoorddinerthuis.nl</a></p>
-  </div>
+  <form class="scheduleMailForm" method="post" action="">
+    <h4 style="float:right;">
+      <span class="mail-field-recipient">{{../email}}</span>
+       als {{characterName ../character}} -
+      <span class="mail-field-scheduledDate">{{formatDate date}}</span>
+    </h4>
+    <h4 class="mail-field-subject">{{subject}}</h4>
+    <div class="mail-field-body">
+      {{{renderMarkdown body}}}
+      {{> mailFooter}}
+    </div>
+  </form>
+</template>
+
+<template name="mailFooter">
+  <p style="margin-top: 20px; font-style: italic; font-size: 10px; text-align: center;">Moorddiner Doel – georganiseerd door {{../../contact.name}} op {{formatDate ../../date}} - <a href="http://www.jouwmoorddinerthuis.nl">www.jouwmoorddinerthuis.nl</a></p>
 </template>

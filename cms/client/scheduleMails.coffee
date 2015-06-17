@@ -46,6 +46,19 @@ Template.participant.helpers
 
     mails
 
+Template.schedule.events
+  'click #scheduleMails': ->
+    $('#scheduleMails').attr('disabled','disabled').text('Bezig met agenderen...')
+    $('.scheduleMailForm').each (index, form) ->
+      $form = $(form)
+      mail =
+        scheduledDate: moment($('.mail-field-scheduledDate', $form).text(), 'D MMMM YYYY').toDate()
+        recipient: $('.mail-field-recipient', $form).text()
+        subject: $('.mail-field-subject', $form).text()
+        body: $('.mail-field-body', $form).html()
+      console.log 'scheduling', mail
+      Outbox.insert(mail);
+    Meteor.call('setEventScheduled', Iron.controller().getParams()._id);
 
 Template.afMarkdown.events
   'keyup textarea': (evt) ->

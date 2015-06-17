@@ -5,10 +5,10 @@
     {{#unless isAssigned}}
       <a href="Events/{{doc._id}}/edit">Rollen verdelen</a>
     {{else}}
-      {{#unless scheduled}}
+      {{#unless doc.scheduled}}
         <a href="Events/{{doc._id}}/schedule">Mails plannen</a>
       {{else}}
-        All set!
+        <a href="Events/{{doc._id}}/schedule">All set!</a>
       {{/unless}}
     {{/unless}}
   {{/if}}

@@ -5,24 +5,16 @@
   name: 'Moorddiner'
   nonAdminRedirectRoute: 'login'
   collections:
-    Stories:
-      label: 'Verhalen'
-      color: 'green'
-      icon: 'book'
+    Outbox:
+      label: 'Outbox'
+      color: 'purple'
+      icon: 'envelope-o'
+      extraFields: ['scheduledDate','sentDate']
       tableColumns: [
-        { label: 'Naam', name: 'name' }
-        { label: 'Minimaal', name: 'minpeople' }
-        { label: 'Maximaal', name: 'maxpeople' }
-      ]
-    Characters:
-      label: 'Personages'
-      color: 'green'
-      icon: 'user-secret'
-      extraFields: ['story']
-      tableColumns: [
-        { label: 'Naam', name: 'name' }
-        { label: 'Nummer', name: 'number' }
-        { label: 'Verhaal', name: 'storyname()' }
+        { label: 'Ontvanger', name: 'recipient' }
+        { label: 'Onderwerp', name: 'subject' }
+        { label: 'Wordt verzonden op', name: 'scheduledDateFormat()' }
+        { label: 'Is verzonden op', name: 'sentDateFormat()' }
       ]
     Events:
       label: 'Evenementen'
@@ -37,6 +29,25 @@
         { label: 'Verhaal', name: 'storyname()' }
         { label: 'Volgende stap', template: 'eventStatus' }
       ]
+    Characters:
+      label: 'Personages'
+      color: 'green'
+      icon: 'user-secret'
+      extraFields: ['story']
+      tableColumns: [
+        { label: 'Naam', name: 'name' }
+        { label: 'Nummer', name: 'number' }
+        { label: 'Verhaal', name: 'storyname()' }
+      ]
+    Stories:
+      label: 'Verhalen'
+      color: 'green'
+      icon: 'book'
+      tableColumns: [
+        { label: 'Naam', name: 'name' }
+        { label: 'Minimaal', name: 'minpeople' }
+        { label: 'Maximaal', name: 'maxpeople' }
+      ]
 
 Characters.helpers
   storyname: ->
@@ -45,7 +56,15 @@ Events.helpers
   storyname: ->
     Stories.findOne(@story).name;
   createddateFormat: ->
-    return moment(@createdDate).format('D MMM YYYY') if @createdDate
-    ""
+    return "" unless @createdDate
+    moment(@createdDate).format('D MMMM YYYY')
   dateFormat: ->
-    moment(@date).format('D MMM YYYY');
+    return "" unless @date
+    moment(@date).format('D MMMM YYYY');
+Outbox.helpers
+  scheduledDateFormat: ->
+    return "" unless @scheduledDate
+    moment(@scheduledDate).format('D MMMM YYYY');
+  sentDateFormat: ->
+    return "" unless @sentDate
+    moment(@sentDate).format('D MMMM YYYY');
