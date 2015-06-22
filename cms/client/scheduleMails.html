@@ -1,7 +1,7 @@
 <template name="schedule">
   <div class="schedule">
     {{#with event}}
-      <h3>Moorddiner Doel bij {{contact.name}}</h3>
+      <h3>Moorddiner spookdorp Doel bij {{contact.name}}</h3>
       <div>
         {{formatDate date}} om {{time}} op {{address}}, {{amountOfParticipants}} deelnemers
       </div>
@@ -57,5 +57,5 @@
 </template>
 
 <template name="mailFooter">
-  <p style="margin-top: 20px; font-style: italic; font-size: 10px; text-align: center;">Moorddiner Doel – georganiseerd door {{../../contact.name}} op {{formatDate ../../date}} - <a href="http://www.jouwmoorddinerthuis.nl">www.jouwmoorddinerthuis.nl</a></p>
+  <p style="margin-top: 20px; font-style: italic; font-size: 10px; text-align: center;">Moorddiner spookdorp Doel – georganiseerd door {{../../contact.name}} op {{formatDate ../../date}} - <a href="http://www.jouwmoorddinerthuis.nl">www.jouwmoorddinerthuis.nl</a></p>
 </template>
