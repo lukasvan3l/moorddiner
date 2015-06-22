@@ -13,6 +13,17 @@ Router.route('/testmails', {
   where: 'server'
 });
 
+Router.route('/resetmails', {
+  action: ->
+    Outbox.remove({})
+    Events.update {scheduled:true}, {$set:{scheduled:false}}, (err) ->
+      if err then console.error err
+
+    @response.write('ok')
+    @response.end()
+  where: 'server'
+});
+
 SyncedCron.start()
 
 sendMails = ->
