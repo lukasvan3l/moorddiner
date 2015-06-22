@@ -151,6 +151,9 @@ OutboxSchema = new SimpleSchema
     type: String
     min: 10
     label: 'Inhoud'
+    autoform:
+      rows: 30
+
 
 Stories.attachSchema(StorySchema)
 Characters.attachSchema(CharacterSchema)
