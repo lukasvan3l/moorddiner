@@ -1,4 +1,4 @@
-@pricePerPerson = 8.50;
+@pricePerPerson = 7.50;
 @ibanHester = 'NL43ABNA0572899149';
 
 @AdminConfig =

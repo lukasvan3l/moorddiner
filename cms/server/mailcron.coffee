@@ -1,7 +1,7 @@
 SyncedCron.add
   name: 'Send mails'
   schedule: (parser) ->
-    parser.text 'at 10:00am every day'
+    parser.recur().on(10).hour()
   job: ->
     sendMails()
 
@@ -18,5 +18,5 @@ sendMails = ->
       html: mail.body
     }
     # Email.send(mailFields);
-    console.log('sending mail:', mailFields);
-    Outbox.update(mail._id, {$set: {sentDate: new Date()}})
+    console.log('sending mail', mailFields.subject, 'to', mailFields.to);
+    # Outbox.update(mail._id, {$set: {sentDate: new Date()}})
