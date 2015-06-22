@@ -1,7 +1,7 @@
 SyncedCron.add
   name: 'Send mails'
   schedule: (parser) ->
-    parser.recur().on(10).hour()
+    parser.recur().on(23).hour()
   job: ->
     sendMails()
 
