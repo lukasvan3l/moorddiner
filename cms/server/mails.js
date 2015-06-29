@@ -1,6 +1,7 @@
 
 SSR.compileTemplate('mailConfirmation', Assets.getText('mail-confirmation.html'));
 SSR.compileTemplate('mailCustomer', Assets.getText('mail-customer.html'));
+SSR.compileTemplate('mailDemo', Assets.getText('mail-demo.html'));
 
 Events.after.insert(function(userId, doc) {
   var text = SSR.render("mailCustomer", {
@@ -34,3 +35,18 @@ Events.after.insert(function(userId, doc) {
   });
 });
 
+Meteor.methods({
+  sendDemoMail: function(email, name) {
+    var text = SSR.render("mailDemo", {
+      speler: name
+    });
+    console.log('sending to', email, name);
+    Email.send({
+      to: email,
+      cc: 'hester@jouwmoorddinerthuis.nl',
+      from: 'hester@jouwmoorddinerthuis.nl',
+      subject: 'Voorbeeld personage Moorddiner \'Doel\'',
+      html: text
+    });
+  }
+});
