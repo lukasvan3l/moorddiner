@@ -48,5 +48,6 @@ Meteor.methods({
       subject: 'Voorbeeld personage Moorddiner \'Doel\'',
       html: text
     });
+    return "mail sent to " + email;
   }
 });
