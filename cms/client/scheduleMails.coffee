@@ -42,7 +42,10 @@ Template.participant.helpers
     _.each mails, (m) ->
       counter++
       m.date = moment(ev.date).subtract(m.sendOffset, 'days')
-      m.subject = "Moorddiner spookdorp Doel - mail " + counter + " van " + amountOfMails
+      if (amountOfMails >= counter)
+        m.subject = "Moorddiner spookdorp Doel - mail " + counter + " van " + amountOfMails
+      else
+        m.subject = "Moorddiner spookdorp Doel"
 
     mails
 
