@@ -45,7 +45,7 @@ Template.participant.helpers
       if (amountOfMails >= counter)
         m.subject = "Moorddiner spookdorp Doel - mail " + counter + " van " + amountOfMails
       else
-        m.subject = "Moorddiner spookdorp Doel"
+        m.subject = "Hoe vond je moorddiner Spookdorp Doel gisteren?"
 
     mails
 
