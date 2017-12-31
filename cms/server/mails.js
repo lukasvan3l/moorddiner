@@ -16,7 +16,6 @@ Events.after.insert(function(userId, doc) {
   });
 });
 
-
 Events.after.insert(function(userId, doc) {
   var text = SSR.render("mailConfirmation", {
     recipient: doc.contact.name,
