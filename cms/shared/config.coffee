@@ -13,8 +13,8 @@
       tableColumns: [
         { label: 'Ontvanger', name: 'recipient' }
         { label: 'Onderwerp', name: 'subject' }
-        { label: 'Wordt verzonden op', name: 'scheduledDateFormat()' }
-        { label: 'Is verzonden op', name: 'sentDateFormat()' }
+        { label: 'Wordt verzonden op', name: 'scheduledDate' }
+        { label: 'Is verzonden op', name: 'sentDate' }
       ]
     Events:
       label: 'Evenementen'
@@ -24,8 +24,8 @@
       omitFields: ['scheduled']
       tableColumns: [
         { label: 'Klant', name: 'contact.name' }
-        { label: 'Besteld op', name: 'createddateFormat()' }
-        { label: 'Datum', name: 'dateFormat()' }
+        { label: 'Besteld op', name: 'createdDate' }
+        { label: 'Datum', name: 'date' }
         { label: 'Verhaal', name: 'storyname()' }
         { label: 'Volgende stap', template: 'eventStatus' }
       ]
