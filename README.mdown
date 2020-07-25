@@ -1,5 +1,14 @@
 # Moorddiner van Hester van Deutekom
 
+See it running at https://www.jouwmoorddinerthuis.nl/
 ```
 meteor run
+```
+
+## Deploy
+
+Monitoring at https://my.agora-fr1.scalingo.com/apps/moorddiner/
+
+```
+git push scalingo master 
 ```
