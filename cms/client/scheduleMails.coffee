@@ -35,6 +35,7 @@ Template.participant.helpers
       m.body = m.body.replace('{{speler}}', participant.name)
         .replace('{{datum}}', moment.utc(ev.date).format('D MMMM YYYY') + " om " + ev.time)
         .replace('{{adres}}', ev.address)
+        .replace('{{aantaldeelnemers}}', ev.amountOfParticipants)
         .replace('{{aantalmails}}', amountOfMails - 1) # this variable is used in the first email, so minus that one.
 
     # add date
