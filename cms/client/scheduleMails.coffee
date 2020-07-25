@@ -23,7 +23,7 @@ Template.participant.helpers
       return true if not m.onlyForAmountPeople
       return false
 
-    # calculate amount of mails - after filtering
+    # calculate amount of mails that are sent before the event
     amountOfMails = _.filter(mails, (m2) -> m2.sendOffset >= 0).length;
 
     # sort by sendOffset
@@ -33,15 +33,25 @@ Template.participant.helpers
     # replace variables
     _.each mails, (m) ->
       m.body = m.body.replace('{{speler}}', participant.name)
-        .replace('{{datum}}', moment(ev.date).format('D MMMM YYYY') + " om " + ev.time)
+        .replace('{{datum}}', moment.utc(ev.date).format('D MMMM YYYY') + " om " + ev.time)
         .replace('{{adres}}', ev.address)
-        .replace('{{aantalmails}}', amountOfMails - 1)
+        .replace('{{aantalmails}}', amountOfMails - 1) # this variable is used in the first email, so minus that one.
 
     # add date
     counter = 0
     _.each mails, (m) ->
-      counter++
-      m.date = moment(ev.date).subtract(m.sendOffset, 'days')
+      counter++;
+
+      # if the event is sooner than the offset, then send 1 mail every coming day
+      wantedDate = moment.utc(ev.date).startOf('day').subtract(m.sendOffset, 'days');
+      today = moment.utc().startOf('day');
+      if (wantedDate.isBefore(today.add(counter-1, 'days')) || wantedDate.isSame(today.add(counter, 'days'), 'day'))
+        wantedDate = today.add(counter, 'days');
+      eventDate = moment.utc(ev.date).startOf('day');
+      if (wantedDate.isAfter(eventDate) || wantedDate.isSame(eventDate, 'day'))
+        wantedDate = eventDate.subtract(1, 'days');
+      m.date = wantedDate;
+
       if (amountOfMails >= counter)
         m.subject = "Moorddiner spookdorp Doel - mail " + counter + " van " + amountOfMails
       else

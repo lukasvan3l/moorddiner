@@ -1,1 +1,5 @@
 # Moorddiner van Hester van Deutekom
+
+```
+meteor run
+```

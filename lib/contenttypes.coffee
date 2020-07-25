@@ -100,7 +100,7 @@ EventSchema = new SimpleSchema
   date:
     type: Date
     label: 'Datum moorddiner'
-    min: -> moment().add(13,'days').toDate()
+    min: -> moment().toDate()
   time:
     type: String
     label: 'Tijdstip aanvang moorddiner'
