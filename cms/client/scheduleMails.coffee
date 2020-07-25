@@ -44,7 +44,7 @@ Template.participant.helpers
 
       # if the event is sooner than the offset, then send 1 mail every coming day
       wantedDate = moment.utc(ev.date).startOf('day').subtract(m.sendOffset, 'days');
-      today = moment.utc().startOf('day').add(counter-1, 'days');
+      today = moment.utc().startOf('day').add(counter, 'days');
       if (wantedDate.isBefore(today))
         wantedDate = today;
       eventDate = moment.utc(ev.date).startOf('day');
